@@ -16,24 +16,34 @@
 package config
 
 import (
-	"os"
+	"strings"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
-// NewCommand created a new `config` command
-func NewCommand() *cobra.Command {
-	configCommand := &cobra.Command{
-		Use:     "config",
-		Short:   "Arduino configuration commands.",
-		Example: "  " + os.Args[0] + " config init",
+func initSetCommand() *cobra.Command {
+	setCommand := &cobra.Command{
+		Use:     "set",
+		Short:   "",
+		Long:    "",
+		Example: "",
+		Args:    cobra.ExactArgs(2),
+		Run:     runSetCommand,
 	}
+	return setCommand
+}
 
-	configCommand.AddCommand(initDumpCmd())
-	configCommand.AddCommand(initInitCommand())
-	configCommand.AddCommand(initSetCommand())
-	configCommand.AddCommand(initAddCommand())
-	configCommand.AddCommand(initRemoveCommand())
+func runSetCommand(cmd *cobra.Command, args []string) {
+	// We're assuming the config file already exists, we should probably
+	// create one in case it doesn't
+	settingsKey := args[0]
 
-	return configCommand
+	if settingsKey == "board_manager.additional_urls" {
+		urls := strings.Split(args[1], ",")
+		viper.Set(args[0], urls)
+	} else {
+		viper.Set(args[0], args[1])
+	}
+	viper.WriteConfig()
 }
