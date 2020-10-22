@@ -1,6 +1,7 @@
 name: Check for issues with signing certificates
 
 on:
+  push:
   schedule:
     # run every 10 hours
     - cron: "* */10 * * *"
