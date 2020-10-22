@@ -73,8 +73,8 @@ func NewCommand() *cobra.Command {
 	command.Flags().BoolVarP(&dryRun, "dry-run", "n", false, "Perform the build but do not copy the compile output file.")
 	command.Flags().StringVar(&buildPath, "build-path", "",
 		"Path where to save compiled files. If omitted, a directory will be created in the default temporary path of your OS.")
-	command.Flags().StringSliceVar(&buildProperties, "build-properties", []string{},
-		"List of custom build properties separated by commas. Or can be used multiple times for multiple properties.")
+	command.Flags().StringArrayVar(&buildProperties, "build-properties", []string{},
+		"List of custom build properties separated by spaces. Or can be used multiple times for multiple properties.")
 	command.Flags().StringVar(&warnings, "warnings", "none",
 		`Optional, can be "none", "default", "more" and "all". Defaults to "none". Used to tell gcc which warning level to use (-W flag).`)
 	command.Flags().BoolVarP(&verbose, "verbose", "v", false, "Optional, turns on verbose mode.")

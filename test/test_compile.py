@@ -233,3 +233,74 @@ def test_compile_without_precompiled_libraries(run_command, data_dir):
         "compile -b arduino:mbed:nano33ble {}/libraries/BSEC_Software_Library/examples/basic/".format(data_dir)
     )
     assert result.ok
+
+
+def test_compile_with_build_property_containing_quotes(run_command, data_dir, copy_sketch):
+    # Init the environment explicitly
+    assert run_command("core update-index")
+
+    # Install Arduino AVR Boards
+    assert run_command("core install arduino:avr@1.8.3")
+
+    sketch_path = copy_sketch("sketch_with_single_define")
+    fqbn = "arduino:avr:uno"
+
+    # Compile using a build property with an equal
+    res = run_command(
+        f"compile -b {fqbn} "
+        + '--build-properties="build.extra_flags=\\"-DMY_DEFINE=\\"hello world\\"\\"" '
+        + f"{sketch_path} --verbose"
+    )
+    assert res.ok
+    assert '-DMY_DEFINE=\\"hello world\\"' in res.stdout
+
+
+def test_compile_with_multiple_build_properties(run_command, data_dir, copy_sketch):
+    # Init the environment explicitly
+    assert run_command("core update-index")
+
+    # Install Arduino AVR Boards
+    assert run_command("core install arduino:avr@1.8.3")
+
+    sketch_path = copy_sketch("sketch_with_multiple_defines")
+    fqbn = "arduino:avr:uno"
+
+    # Create a test sketch
+    assert run_command(f"sketch new {sketch_path}")
+
+    # Compile using multiple build properties separated by a space
+    res = run_command(
+        f"compile -b {fqbn} "
+        + '--build-properties="compiler.cpp.extra_flags=\\"-DPIN=2 -DSSID=\\"This is a String\\"\\"" '
+        + f"{sketch_path} --verbose"
+    )
+    assert res.ok
+    assert '-DPIN=2 -DSSID=\\"This is a String\\"' in res.stdout
+
+    # Tries compilation using multiple build properties separated by a comma
+    res = run_command(
+        f"compile -b {fqbn} "
+        + '--build-properties="compiler.cpp.extra_flags=\'-DPIN=2,-DSSID=\\"This is a String\\"\\"\' '
+        + f"{sketch_path} --verbose"
+    )
+    assert res.failed
+
+    res = run_command(
+        f"compile -b {fqbn} "
+        + '--build-properties="compiler.cpp.extra_flags=\\"-DPIN=2\\"" '
+        + '--build-properties="compiler.cpp.extra_flags=\\"-DSSID=\\"This is a String\\"\\"" '
+        + f"{sketch_path} --verbose"
+    )
+    assert res.ok
+    assert "-DPIN=2" not in res.stdout
+    assert '-DSSID=\\"This is a String\\"' in res.stdout
+
+    res = run_command(
+        f"compile -b {fqbn} "
+        + '--build-properties="compiler.cpp.extra_flags=\\"-DPIN=2\\"" '
+        + '--build-properties="build.extra_flags=\\"-DMY_DEFINE=\\"hello world\\"\\"" '
+        + f"{sketch_path} --verbose"
+    )
+    assert res.ok
+    assert "-DPIN=2" in res.stdout
+    assert '-DMY_DEFINE=\\"hello world\\"' in res.stdout
