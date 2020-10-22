@@ -37,7 +37,7 @@ jobs:
         env:
           CERTIFICATE: ${{ secrets[matrix.certificate.certificate-secret] }}
         run: |
-          echo "${{ env.CERTIFICATE }}" | base64 --ignore-garbage --decode > "${{ env.CERTIFICATE_PATH }}"
+          echo "${{ env.CERTIFICATE }}" | openssl enc -d -base64 -out "${{ env.CERTIFICATE_PATH }}"
 
       - name: Verify certificate
         env:
