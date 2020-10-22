@@ -44,7 +44,7 @@ jobs:
           CERTIFICATE_PASSWORD: ${{ secrets[matrix.certificate.password-secret] }}
         run: |
           (
-            openssl pkcs12 \
+            openssl x509 \
               -in "${{ env.CERTIFICATE_PATH }}" \
               -noout -passin env:CERTIFICATE_PASSWORD
           ) || (
