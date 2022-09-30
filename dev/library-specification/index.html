@@ -1063,20 +1063,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../rpc/monitor/" class="md-nav__link">
-        monitor
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../rpc/settings/" class="md-nav__link">
         settings
       </a>
@@ -1245,6 +1231,26 @@
   <a href="#libraryproperties-file-format" class="md-nav__link">
     library.properties file format
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-constraints" class="md-nav__link">
+    Version constraints
+  </a>
+  
+    <nav class="md-nav" aria-label="Version constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1565,6 +1571,26 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#version-constraints" class="md-nav__link">
+    Version constraints
+  </a>
+  
+    <nav class="md-nav" aria-label="Version constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1745,14 +1771,14 @@ and
 <a href="https://create.arduino.cc/projecthub/Arduino_Genuino/getting-started-with-arduino-web-editor-on-various-platforms-4b3e4a#toc-libraries-and-the-arduino-web-editor-11">Arduino Web Editor</a>
 as well as <a href="../commands/arduino-cli_lib/"><code>arduino-cli lib</code></a>.</p>
 <p>More information about how Library Manager works is available
-<a href="https://github.com/arduino/Arduino/wiki/Library-Manager-FAQ">here</a>.</p>
+<a href="https://github.com/arduino/library-registry/blob/main/FAQ.md#readme">here</a>.</p>
 <p>Arduino development software supports multiple microcontroller architectures (e.g. AVR, SAM, etc), meaning that
 libraries may need to work on multiple architectures. The new 1.5 library format doesn’t contain special support for
 cross-architecture libraries, but it does provide a preprocessor based mechanism for libraries to target sections of
 code to specific architectures.</p>
 <h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="http://docs.arduino.cc/learn/contributions/arduino-library-style-guide">Arduino library style guide</a></li>
+<li><a href="https://docs.arduino.cc/learn/contributions/arduino-library-style-guide">Arduino library style guide</a></li>
 <li><a href="../sketch-build-process/#dependency-resolution">Library dependency resolution process documentation</a></li>
 </ul>
 <h2 id="15-library-format-rev-22">1.5 library format (rev. 2.2)<a class="headerlink" href="#15-library-format-rev-22" title="Permanent link">&para;</a></h2>
@@ -1768,9 +1794,9 @@ otherwise below, <strong>all fields are required</strong>. The available fields 
 <li><strong>name</strong> - the name of the library. Library names must contain only basic letters (A-Z or a-z) and numbers (0-9),
   spaces ( ), underscores (_), dots (.) and dashes (-). They must start with a letter or number. They must contain at
   least one letter. Note that libraries with a <code>name</code> value starting with <code>Arduino</code> will no longer be allowed
-  <a href="https://github.com/arduino/Arduino/wiki/Library-Manager-FAQ">addition to the Library Manager index</a> as these names
-  are now reserved for official Arduino libraries.</li>
-<li><strong>version</strong> - version of the library. Version should be <a href="http://semver.org/">semver</a> compliant. 1.2.0 is correct; 1.2
+  <a href="https://github.com/arduino/library-registry/blob/main/README.md#adding-a-library-to-library-manager">addition to the Library Manager index</a>
+  as these names are now reserved for official Arduino libraries.</li>
+<li><strong>version</strong> - version of the library. Version should be <a href="https://semver.org/">semver</a> compliant. 1.2.0 is correct; 1.2
   is accepted; r5, 003, 1.1c are invalid</li>
 <li><strong>author</strong> - name/nickname of the authors and their email addresses (not mandatory) separated by comma (,)</li>
 <li><strong>maintainer</strong> - name and email of the maintainer</li>
@@ -1800,7 +1826,9 @@ otherwise below, <strong>all fields are required</strong>. The available fields 
   install the dependencies during installation of the library.
   <a href="../commands/arduino-cli_lib_install/"><code>arduino-cli lib install</code></a> will automatically install the dependencies. Since
   spaces are allowed in the <code>name</code> of a library, but not commas, you can refer to libraries containing spaces in the
-  name without ambiguity for example:<br> <code>depends=Very long library name, Another library with long-name</code></li>
+  name without ambiguity for example:<br> <code>depends=Very long library name, Another library with long-name</code><br>
+  <a href="#version-constraints">Version constraints</a> for the dependency may be specified in parentheses after the name:<br>
+  <code>depends=ArduinoHttpClient (&gt;=1.0.0)</code></li>
 <li><strong>dot_a_linkage</strong> - <strong>(available from Arduino IDE 1.6.0 / arduino-builder 1.0.0-beta13)</strong> (optional) when set to
   <code>true</code>, the library will be compiled using a .a (archive) file. First, all source files are compiled into .o files as
   normal. Then instead of including all .o
@@ -1842,6 +1870,120 @@ architectures=avr
 includes=WebServer.h
 depends=ArduinoHttpClient
 </code></pre></div>
+<h4 id="version-constraints">Version constraints<a class="headerlink" href="#version-constraints" title="Permanent link">&para;</a></h4>
+<p><strong>(available from Arduino IDE 2.0.0-beta.3/Arduino CLI 0.7.0)</strong></p>
+<p>By default, the latest version of a dependency specified in the <code>depends</code> field of
+<a href="#libraryproperties-file-format"><code>library.properties</code></a> is installed along with the library. Specifying an exact version
+or range of versions is also supported.</p>
+<p>The following operators are available:</p>
+<!-- code tags used below to reconcile mismatch between Prettier and Python-Markdown handling of pipe characters -->
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>=</code></td>
+<td>equal to</td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td>greater than</td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td>greater than or equal to</td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td>less than</td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td>less than or equal to</td>
+</tr>
+<tr>
+<td><code>!</code></td>
+<td>NOT <a href="#not-note"><sup>1</sup></a></td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code></td>
+<td>AND</td>
+</tr>
+<tr>
+<td><code>||</code></td>
+<td>OR</td>
+</tr>
+<tr>
+<td><code>(</code>, <code>)</code></td>
+<td>constraint group</td>
+</tr>
+</tbody>
+</table>
+<p><a id="not-note"></a> <sup>1</sup> Available from Arduino IDE 2.0.0-rc7/Arduino CLI 0.22.0</p>
+<h5 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h5>
+<p>If the library "ArduinoHttpClient" has the following releases:</p>
+<ul>
+<li><code>0.1.0</code></li>
+<li><code>1.0.0</code></li>
+<li><code>2.0.0</code></li>
+<li><code>2.1.0</code></li>
+</ul>
+<p>The version of it installed as a dependency would be as follows:</p>
+<table>
+<thead>
+<tr>
+<th><code>depends</code> field value</th>
+<th>Installs<br> version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ArduinoHttpClient</code></td>
+<td><code>2.1.0</code></td>
+</tr>
+<tr>
+<td><code>ArduinoHttpClient (=1.0.0)</code></td>
+<td><code>1.0.0</code></td>
+</tr>
+<tr>
+<td><code>ArduinoHttpClient (&gt;1.0.0)</code></td>
+<td><code>2.1.0</code></td>
+</tr>
+<tr>
+<td><code>ArduinoHttpClient (&gt;=1.0.0)</code></td>
+<td><code>2.1.0</code></td>
+</tr>
+<tr>
+<td><code>ArduinoHttpClient (&lt;2.0.0)</code></td>
+<td><code>1.0.0</code></td>
+</tr>
+<tr>
+<td><code>ArduinoHttpClient (&lt;=2.0.0)</code></td>
+<td><code>2.0.0</code></td>
+</tr>
+<tr>
+<td><code>ArduinoHttpClient (!=1.0.0)</code></td>
+<td><code>2.1.0</code></td>
+</tr>
+<tr>
+<td><code>ArduinoHttpClient (&gt;1.0.0 &amp;&amp; &lt;2.1.0)</code></td>
+<td><code>2.0.0</code></td>
+</tr>
+<tr>
+<td><code>ArduinoHttpClient (&lt;1.0.0 || &gt;2.0.0)</code></td>
+<td><code>2.1.0</code></td>
+</tr>
+<tr>
+<td><code>ArduinoHttpClient ((&gt;0.1.0 &amp;&amp; &lt;2.0.0) || &gt;2.1.0)</code></td>
+<td><code>1.0.0</code></td>
+</tr>
+</tbody>
+</table>
 <h3 id="layout-of-folders-and-files">Layout of folders and files<a class="headerlink" href="#layout-of-folders-and-files" title="Permanent link">&para;</a></h3>
 <p>Each folder has a specific purpose (sources, examples, documentation, etc). Folders not covered in this specification
 may be added as needed to future revisions.</p>
@@ -1941,7 +2083,7 @@ Editor.</p>
 <p>More information:</p>
 <ul>
 <li><a href="../sketch-specification/">Arduino sketch specification</a></li>
-<li><a href="https://www.arduino.cc/en/Reference/StyleGuide">Style guide for Arduino examples</a></li>
+<li><a href="https://docs.arduino.cc/learn/contributions/arduino-writing-style-guide">Style guide for Arduino examples</a></li>
 </ul>
 <h4 id="extra-documentation">Extra documentation<a class="headerlink" href="#extra-documentation" title="Permanent link">&para;</a></h4>
 <p>An <strong>extras</strong> folder can be used by the developer to put documentation or other items to be bundled with the library.
@@ -2059,8 +2201,8 @@ be in the Arduino Language Reference.</p>
 accidentally modifying example sketches. During the library development process you may want to edit example sketches in
 place using the Arduino IDE. With Arduino IDE 1.6.6 and newer, the read-only behavior can be disabled by adding a file
 named .development to the root of the library folder. A <a href="#libraryproperties-file-format">library.properties</a> file must
-also be present. The <a href="https://github.com/arduino/Arduino/wiki/Library-Manager-FAQ">Library Manager indexer</a> will not
-pick up releases that contain a .development file so be sure not to push this file to your remote repository.</p>
+also be present. The <a href="https://github.com/arduino/library-registry/blob/main/FAQ.md#readme">Library Manager indexer</a> will
+not pick up releases that contain a .development file so be sure not to push this file to your remote repository.</p>
 <h3 id="a-complete-example">A complete example<a class="headerlink" href="#a-complete-example" title="Permanent link">&para;</a></h3>
 <p>A hypothetical library named "Servo" that adheres to the specification follows:</p>
 <div class="highlight"><pre><span></span><code>Servo/

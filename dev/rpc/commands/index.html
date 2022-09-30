@@ -1317,6 +1317,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#downloadresult" class="md-nav__link">
+    DownloadResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#initrequest" class="md-nav__link">
     InitRequest
   </a>
@@ -1859,6 +1866,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#libraryupgraderequest" class="md-nav__link">
+    LibraryUpgradeRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libraryupgraderesponse" class="md-nav__link">
+    LibraryUpgradeResponse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#searchedlibrary" class="md-nav__link">
     SearchedLibrary
   </a>
@@ -1882,6 +1903,13 @@
           <li class="md-nav__item">
   <a href="#ziplibraryinstallresponse" class="md-nav__link">
     ZipLibraryInstallResponse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libraryinstalllocation" class="md-nav__link">
+    LibraryInstallLocation
   </a>
   
 </li>
@@ -2130,20 +2158,6 @@
   
 </nav>
       
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../monitor/" class="md-nav__link">
-        monitor
-      </a>
     </li>
   
 
@@ -2640,6 +2654,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#downloadresult" class="md-nav__link">
+    DownloadResult
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#initrequest" class="md-nav__link">
     InitRequest
   </a>
@@ -3182,6 +3203,20 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#libraryupgraderequest" class="md-nav__link">
+    LibraryUpgradeRequest
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libraryupgraderesponse" class="md-nav__link">
+    LibraryUpgradeResponse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#searchedlibrary" class="md-nav__link">
     SearchedLibrary
   </a>
@@ -3205,6 +3240,13 @@
           <li class="md-nav__item">
   <a href="#ziplibraryinstallresponse" class="md-nav__link">
     ZipLibraryInstallResponse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libraryinstalllocation" class="md-nav__link">
+    LibraryInstallLocation
   </a>
   
 </li>
@@ -3505,6 +3547,7 @@
 <li><a href="#cc.arduino.cli.commands.v1.CreateResponse">CreateResponse</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.DestroyRequest">DestroyRequest</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.DestroyResponse">DestroyResponse</a></li>
+<li><a href="#cc.arduino.cli.commands.v1.DownloadResult">DownloadResult</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.InitRequest">InitRequest</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.InitResponse">InitResponse</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.InitResponse.Progress">InitResponse.Progress</a></li>
@@ -3592,12 +3635,15 @@
 <li><a href="#cc.arduino.cli.commands.v1.LibraryUninstallResponse">LibraryUninstallResponse</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.LibraryUpgradeAllRequest">LibraryUpgradeAllRequest</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.LibraryUpgradeAllResponse">LibraryUpgradeAllResponse</a></li>
+<li><a href="#cc.arduino.cli.commands.v1.LibraryUpgradeRequest">LibraryUpgradeRequest</a></li>
+<li><a href="#cc.arduino.cli.commands.v1.LibraryUpgradeResponse">LibraryUpgradeResponse</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.SearchedLibrary">SearchedLibrary</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.SearchedLibrary.ReleasesEntry">SearchedLibrary.ReleasesEntry</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.ZipLibraryInstallRequest">ZipLibraryInstallRequest</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.ZipLibraryInstallResponse">ZipLibraryInstallResponse</a></li>
 </ul>
 <ul>
+<li><a href="#cc.arduino.cli.commands.v1.LibraryInstallLocation">LibraryInstallLocation</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.LibraryLayout">LibraryLayout</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.LibraryLocation">LibraryLocation</a></li>
 <li><a href="#cc.arduino.cli.commands.v1.LibrarySearchStatus">LibrarySearchStatus</a></li>
@@ -4498,6 +4544,38 @@
 </table>
 <p><a name="cc.arduino.cli.commands.v1.DestroyResponse"></a></p>
 <h3 id="destroyresponse">DestroyResponse<a class="headerlink" href="#destroyresponse" title="Permanent link">&para;</a></h3>
+<p><a name="cc.arduino.cli.commands.v1.DownloadResult"></a></p>
+<h3 id="downloadresult">DownloadResult<a class="headerlink" href="#downloadresult" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>url</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>Index URL.</td>
+</tr>
+<tr>
+<td>successful</td>
+<td><a href="#bool">bool</a></td>
+<td></td>
+<td>Download result: true if successful, false if an error occurred.</td>
+</tr>
+<tr>
+<td>error</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>Download error details.</td>
+</tr>
+</tbody>
+</table>
 <p><a name="cc.arduino.cli.commands.v1.InitRequest"></a></p>
 <h3 id="initrequest">InitRequest<a class="headerlink" href="#initrequest" title="Permanent link">&para;</a></h3>
 <table>
@@ -4814,6 +4892,12 @@
 <td></td>
 <td>Arduino Core Service instance from the Init response.</td>
 </tr>
+<tr>
+<td>ignore_custom_package_indexes</td>
+<td><a href="#bool">bool</a></td>
+<td></td>
+<td>If set to true user defined package indexes will not be updated.</td>
+</tr>
 </tbody>
 </table>
 <p><a name="cc.arduino.cli.commands.v1.UpdateIndexResponse"></a></p>
@@ -4833,6 +4917,12 @@
 <td><a href="#cc.arduino.cli.commands.v1.DownloadProgress">DownloadProgress</a></td>
 <td></td>
 <td>Progress of the platforms index download.</td>
+</tr>
+<tr>
+<td>download_result</td>
+<td><a href="#cc.arduino.cli.commands.v1.DownloadResult">DownloadResult</a></td>
+<td></td>
+<td>Report of the index update downloads.</td>
 </tr>
 </tbody>
 </table>
@@ -5157,6 +5247,12 @@
 <td>Download and install an Arduino library from the libraries index.</td>
 </tr>
 <tr>
+<td>LibraryUpgrade</td>
+<td><a href="#cc.arduino.cli.commands.v1.LibraryUpgradeRequest">LibraryUpgradeRequest</a></td>
+<td><a href="#cc.arduino.cli.commands.v1.LibraryUpgradeResponse">LibraryUpgradeResponse</a> stream</td>
+<td>Upgrade a library to the newest version available.</td>
+</tr>
+<tr>
 <td>ZipLibraryInstall</td>
 <td><a href="#cc.arduino.cli.commands.v1.ZipLibraryInstallRequest">ZipLibraryInstallRequest</a></td>
 <td><a href="#cc.arduino.cli.commands.v1.ZipLibraryInstallResponse">ZipLibraryInstallResponse</a> stream</td>
@@ -5416,6 +5512,12 @@
 <td></td>
 <td>If true this Platform has been deprecated</td>
 </tr>
+<tr>
+<td>type</td>
+<td><a href="#string">string</a></td>
+<td>repeated</td>
+<td>Type of the platform.</td>
+</tr>
 </tbody>
 </table>
 <p><a name="cc.arduino.cli.commands.v1.Profile"></a></p>
@@ -5674,6 +5776,12 @@
 <td></td>
 <td>The name of the custom key to use for encrypting during the compile process</td>
 </tr>
+<tr>
+<td>skip_libraries_discovery</td>
+<td><a href="#bool">bool</a></td>
+<td></td>
+<td>If set to true the build will skip the library discovery process and will use the same libraries of latest build. Enabling this flag may produce a wrong output and should not be used in regular compiles unless there is a very specific reason to do so. This flag is mainly provided for usage in language servers to optimize the build speed in some particular cases.</td>
+</tr>
 </tbody>
 </table>
 <p><a name="cc.arduino.cli.commands.v1.CompileRequest.SourceOverrideEntry"></a></p>
@@ -5902,6 +6010,12 @@
 <td><a href="#bool">bool</a></td>
 <td></td>
 <td>Set to true to not run (eventual) post install scripts for trusted platforms</td>
+</tr>
+<tr>
+<td>no_overwrite</td>
+<td><a href="#bool">bool</a></td>
+<td></td>
+<td>Set to true to skip installation if a different version of the platform is already installed.</td>
 </tr>
 </tbody>
 </table>
@@ -6371,7 +6485,7 @@
 <td>real_name</td>
 <td><a href="#string">string</a></td>
 <td></td>
-<td>Value of the <code>name</code> field in library.properties.</td>
+<td><strong>Deprecated.</strong> Value of the <code>name</code> field in library.properties.</td>
 </tr>
 <tr>
 <td>dot_a_linkage</td>
@@ -6644,6 +6758,18 @@
 <td><a href="#bool">bool</a></td>
 <td></td>
 <td>Set to true to skip installation of specified library&#39;s dependencies, defaults to false.</td>
+</tr>
+<tr>
+<td>no_overwrite</td>
+<td><a href="#bool">bool</a></td>
+<td></td>
+<td>Set to true to skip installation if a different version of the library or one of its dependencies is already installed, defaults to false.</td>
+</tr>
+<tr>
+<td>install_location</td>
+<td><a href="#cc.arduino.cli.commands.v1.LibraryInstallLocation">LibraryInstallLocation</a></td>
+<td></td>
+<td>Install the library and dependencies in the specified location</td>
 </tr>
 </tbody>
 </table>
@@ -7031,6 +7157,64 @@
 </tr>
 </tbody>
 </table>
+<p><a name="cc.arduino.cli.commands.v1.LibraryUpgradeRequest"></a></p>
+<h3 id="libraryupgraderequest">LibraryUpgradeRequest<a class="headerlink" href="#libraryupgraderequest" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>instance</td>
+<td><a href="#cc.arduino.cli.commands.v1.Instance">Instance</a></td>
+<td></td>
+<td>Arduino Core Service instance from the <code>Init</code> response.</td>
+</tr>
+<tr>
+<td>name</td>
+<td><a href="#string">string</a></td>
+<td></td>
+<td>Name of the library.</td>
+</tr>
+<tr>
+<td>no_deps</td>
+<td><a href="#bool">bool</a></td>
+<td></td>
+<td>Set to true to skip installation of specified library&#39;s dependencies, defaults to false.</td>
+</tr>
+</tbody>
+</table>
+<p><a name="cc.arduino.cli.commands.v1.LibraryUpgradeResponse"></a></p>
+<h3 id="libraryupgraderesponse">LibraryUpgradeResponse<a class="headerlink" href="#libraryupgraderesponse" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Label</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>progress</td>
+<td><a href="#cc.arduino.cli.commands.v1.DownloadProgress">DownloadProgress</a></td>
+<td></td>
+<td>Progress of the library download.</td>
+</tr>
+<tr>
+<td>task_progress</td>
+<td><a href="#cc.arduino.cli.commands.v1.TaskProgress">TaskProgress</a></td>
+<td></td>
+<td>Description of the current stage of the installation.</td>
+</tr>
+</tbody>
+</table>
 <p><a name="cc.arduino.cli.commands.v1.SearchedLibrary"></a></p>
 <h3 id="searchedlibrary">SearchedLibrary<a class="headerlink" href="#searchedlibrary" title="Permanent link">&para;</a></h3>
 <table>
@@ -7141,6 +7325,29 @@
 </tr>
 </tbody>
 </table>
+<p><a name="cc.arduino.cli.commands.v1.LibraryInstallLocation"></a></p>
+<h3 id="libraryinstalllocation">LibraryInstallLocation<a class="headerlink" href="#libraryinstalllocation" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Number</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LIBRARY_INSTALL_LOCATION_USER</td>
+<td>0</td>
+<td>In the <code>libraries</code> subdirectory of the user directory (sketchbook). This is the default if not specified.</td>
+</tr>
+<tr>
+<td>LIBRARY_INSTALL_LOCATION_BUILTIN</td>
+<td>1</td>
+<td>In the configured &#39;builtin.libraries&#39; directory.</td>
+</tr>
+</tbody>
+</table>
 <p><a name="cc.arduino.cli.commands.v1.LibraryLayout"></a></p>
 <h3 id="librarylayout">LibraryLayout<a class="headerlink" href="#librarylayout" title="Permanent link">&para;</a></h3>
 <table>
@@ -7176,9 +7383,9 @@
 </thead>
 <tbody>
 <tr>
-<td>LIBRARY_LOCATION_IDE_BUILTIN</td>
+<td>LIBRARY_LOCATION_BUILTIN</td>
 <td>0</td>
-<td>In the <code>libraries</code> subdirectory of the Arduino IDE installation.</td>
+<td>In the configured &#39;builtin.libraries&#39; directory.</td>
 </tr>
 <tr>
 <td>LIBRARY_LOCATION_USER</td>
@@ -8266,13 +8473,13 @@
       
       
         
-        <a href="../monitor/" class="md-footer__link md-footer__link--next" aria-label="Next: monitor" rel="next">
+        <a href="../settings/" class="md-footer__link md-footer__link--next" aria-label="Next: settings" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              monitor
+              settings
             </div>
           </div>
           <div class="md-footer__button md-icon">
