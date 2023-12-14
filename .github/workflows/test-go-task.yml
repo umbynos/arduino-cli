@@ -113,7 +113,7 @@ jobs:
           mv coverage_integration.txt coverage_integration_${{ matrix.operating-system }}_${{ matrix.tests }}.txt
 
       - name: Upload coverage data to workflow artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
           name: ${{ env.COVERAGE_ARTIFACT }}
@@ -156,7 +156,7 @@ jobs:
 
       - name: Upload coverage data to workflow artifact
         if: runner.os == 'Linux'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
           name: ${{ env.COVERAGE_ARTIFACT }}
